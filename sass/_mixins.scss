@@ -1,0 +1,469 @@
+
+/* Font Color
+--------------------------------------------- */
+//  Variables
+    $txt-copy:          #666;       /* grey */
+    $txt-copy-darker:   #333;       /* darkgrey */
+    $txt-link:          #3b5998;    /* blue */
+    $txt-link-hover:    #005580;    /* darkblue */
+    $txt-success:       #51a351;    /* green */
+    $txt-error:         #bd362f;    /* red */
+    $txt-warning:       #fbf803;    /* yellow */
+    $txt-info:          #3a87ad;    /* lightblue */
+
+/* Album list colors */
+$albumBackgroundAccent: #0069d6;
+$albumFontColor: #fff;
+$albumFontColorDefault: #555;
+
+$mediaFileDisplayWidth: 1000px;
+$mediaThumbWidth: 140px;
+$mediaThumbHeight: 140px;
+
+$darkBlue: #0069d6;
+
+$blue: #3B5998;
+
+$defaultScreenWidth: 970px;
+
+/**
+ * CSS3 Button group
+ */
+@mixin button() {
+    background-color: #f5f5f5;
+    border-color: #ccc #ccc #b3b3b3;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    color: #666;
+    display: inline-block;
+    font-size: 13px;
+    height: 21px;
+    line-height: 20px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+
+    &:hover {
+        background-color: #e6e6e6;
+        color: $txt-copy-darker;
+        text-decoration: none;
+        text-shadow: 0 0 2px #fff;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 0;
+
+        &:hover {
+            text-shadow: 0 0 2px #fff;
+        }
+
+        &:first-child {
+            //margin-left: 8px; // disabled at present time, use of icons may require this
+        }
+
+        &:last-child {
+            //margin-right: 8px; // disabled at present time, use of icons may require this
+            margin-left: 0;
+        }
+    }
+}
+
+/**
+ * CSS3 Modal
+ * @param $width
+ * @param $fixed
+ * @param $dialog [optional]
+ */
+@mixin modal($width: 500px, $fixed: 'on', $dialog: 'on', $important: '') {
+    @extend .modal;
+
+    // Position dialog based on user inputted width
+    width: $width#{$important};
+    left: 50%;
+    top: 50%;
+    margin-left:-($width/2)#{$important};
+    margin-top: -300px;
+    overflow: hidden;
+
+    // ('on') Stick while scrolling, or scroll with page
+    @if $fixed == 'on' {
+        position: fixed;
+    }
+    @else {
+        position: absolute;
+    }
+
+    p {
+        margin: 15px 18px;
+        font-size: 15px;
+    }
+
+    form {
+        margin-bottom: 0;
+
+        input[type="text"],
+        textarea,
+        select,
+        label {
+            margin: 0 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 460px;
+        }
+    }
+
+    header {
+        @include gradient(rgba(59,88,152, 1), rgba(59,88,152, 1));
+        color: #fff;
+        margin: 0 0 15px;
+
+        h1 {
+            margin: 0 0 3px 15px;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            line-height: 40px;
+            display: inline-block;
+        }
+
+        .close {
+            float: right;
+            color: #fff;
+            opacity: 0.7;
+            text-shadow: 0 -2px 0 rgba(0,0,0,0.5);
+            line-height: 38px;
+            font-size: 15px;
+
+            i {
+                @include icon('remove');
+                padding: 0 10px;
+            }
+        }
+    }
+
+    .actions {
+        @extend .form-actions;
+        padding: 10px;
+
+        button {
+            @if $dialog == 'on' {
+                float: right;
+                margin-left: 10px;
+                margin-right: 0;
+            }
+            @else {
+                float: left;
+                margin-left: 0;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+/**
+ * CSS3 Ellipsis
+ */
+@mixin ellipsis(){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -icab-text-overflow: ellipsis;
+    -khtml-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+
+/**
+ * CSS3 Transition
+ * @param $property
+ * @param $duration
+ * @param $function [optional]
+ */
+@mixin transition($duration, $property: all, $function : ease) {
+    -webkit-transition: $property $duration $function;
+    -moz-transition: $property $duration $function;
+    -o-transition: $property $duration $function;
+    transition: $property $duration $function;
+}
+
+/**
+ * Fontawesome 'icon' fix
+ * @param $name (http://fortawesome.github.com/Font-Awesome/)
+ */
+@mixin icon($name) {
+    @extend .icon-#{$name};
+
+    &:before {
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        display: inline-block;
+        text-decoration: inherit;
+        margin-right: 0.4em;
+    }
+}
+
+/**
+ * Bootstrap 'span' classfix
+ * @param $size (1-12)
+ */
+@mixin span($size, $offset: null) {
+    float: left;
+
+    // Prevent margin conflicts with span#/offset#
+    @if $offset == null {
+        margin-left: 10px;
+    }
+    @else {
+        @extend .offset#{$offset};
+    }
+    @extend .span#{$size};
+}
+
+/**
+ * Bootstrap position (left/right/center) fix
+ * @param $name ('left'/'right'/'center')
+ */
+@mixin position($pos) {
+    // Prevent conflict with span#/float
+    @if $pos == 'left' {
+        float: left;
+    }
+    @if $pos == 'right' {
+        float: right;
+    }
+    @if $pos == 'center' {
+        float: none;
+        margin: 0 auto;
+    }
+}
+
+/**
+ * Linear Gragient
+ */
+// Mixins
+    @mixin gradient($colorA, $colorB) {
+        background-color: $colorB;  /* fallback/image non-cover color */
+        background-image: -moz-linear-gradient($colorA, $colorB);  /* Firefox 3.6+ */
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($colorA), to($colorB));  /* Safari 4+, Chrome 1+ */
+        background-image: -webkit-linear-gradient($colorA, $colorB);  /* Safari 5.1+, Chrome 10+ */
+        background-image: -o-linear-gradient($colorA, $colorB);  /* Opera 11.10+ */
+        background-image: -ms-linear-gradient($colorA, $colorB); /* IE */
+        background-image: linear-gradient($colorA, $colorB);
+    }
+
+/**
+ * CSS3 Box Shadow
+ */
+// Parameters
+    $default-box-shadow-h-offset: 0;            /* The default horizontal offset. Positive is to the right. */
+    $default-box-shadow-v-offset: 0;            /* The default vertical offset. Positive is down. */
+    $default-box-shadow-blur: 5px;              /* The default blur length. */
+    $default-box-shadow-spread: 0;              /* The default spread length. */
+    $default-box-shadow-color: rgba(0,0,0,.3);  /* The default color for box shadows */
+    $default-box-shadow-inset: false;           /* OPTIONAL. The default shadow inset: inset or false (for standard shadow). */
+
+// Mixins
+    @mixin single-box-shadow($default-box-shadow-h-offset, $default-box-shadow-v-offset, $default-box-shadow-blur, $default-box-shadow-spread, $default-box-shadow-color, $default-box-shadow-inset:"") {
+        -moz-box-shadow:    $default-box-shadow-h-offset $default-box-shadow-v-offset $default-box-shadow-blur $default-box-shadow-spread $default-box-shadow-color #{$default-box-shadow-inset};
+        -webkit-box-shadow: $default-box-shadow-h-offset $default-box-shadow-v-offset $default-box-shadow-blur $default-box-shadow-spread $default-box-shadow-color #{$default-box-shadow-inset};
+        box-shadow:         $default-box-shadow-h-offset $default-box-shadow-v-offset $default-box-shadow-blur $default-box-shadow-spread $default-box-shadow-color #{$default-box-shadow-inset};
+    }
+
+/**
+ * CSS3 Text Shadow
+ */
+// Parameters
+    $default-text-shadow-h-offset: 0;            /* The default horizontal offset */
+    $default-text-shadow-v-offset: 0;            /* The default vertical offset */
+    $default-text-shadow-blur: 1px;             /* The default blur length */
+    $default-text-shadow-color: rgba(0,0,0,.3);  /* The default color for text shadow */
+
+// Mixins
+    @mixin text-shadow($text-shadow-h-offset, $text-shadow-v-offset, $text-shadow-blur, $text-shadow-color) {
+        -moz-text-shadow:    $text-shadow-h-offset $text-shadow-v-offset $text-shadow-blur $text-shadow-color;
+        -webkit-text-shadow: $text-shadow-h-offset $text-shadow-v-offset $text-shadow-blur $text-shadow-color;
+        text-shadow:         $text-shadow-h-offset $text-shadow-v-offset $text-shadow-blur $text-shadow-color;
+    }
+
+/**
+ * CSS3 Border Radius
+ */
+// Parameters
+    $default-border-top-left-radius:        0;
+    $default-border-top-right-radius:       0;
+    $default-border-bottom-right-radius:    0;
+    $default-border-bottom-left-radius:     0;
+
+// Mixins
+    @mixin border-radius($default-border-top-left-radius, $default-border-top-right-radius, $default-border-bottom-right-radius, $default-border-bottom-left-radius) {
+        -moz-border-radius:    $default-border-top-left-radius $default-border-top-right-radius $default-border-bottom-right-radius $default-border-bottom-left-radius;
+        -webkit-border-radius: $default-border-top-left-radius $default-border-top-right-radius $default-border-bottom-right-radius $default-border-bottom-left-radius;
+        border-radius:         $default-border-top-left-radius $default-border-top-right-radius $default-border-bottom-right-radius $default-border-bottom-left-radius;
+    }
+
+/**
+ * CSS3 Box Sizing
+ */
+// Parameters
+    $default-box-sizing: border-box;
+
+// Mixins
+    @mixin box-sizing($default-box-sizing) {
+        -moz-box-sizing:    $default-box-sizing;
+        -webkit-box-sizing: $default-box-sizing;
+        box-sizing:         $default-box-sizing;
+    }
+
+/**
+ * Menu Icon
+ */
+// Parameters
+    $default-left-shift: 50%;
+    $default-top-shift:  0;
+
+ //Mixin
+    @mixin icon-img($default-left-shift, $default-top-shift) {
+        background: url(../images/icons.png) no-repeat $default-left-shift $default-top-shift transparent;
+        display: inline-block;
+        height: 24px;
+        left: 7px;
+        z-index: 1;
+    }
+
+/**
+ * Navigation Thumb Desktop
+ */
+// Parameters
+    $left-shift: center;
+    $top-shift:  -1500px;
+    $top-shift-hover:  $top-shift - 50;
+    $top-shift-active:  $top-shift - 100;
+
+    @mixin thumb($shift) {
+        background: url(../images/icons.png)no-repeat $left-shift $top-shift + $shift transparent;
+    }
+
+    @mixin thumb-hover($shift) {
+        background-position: $left-shift $top-shift-hover + $shift;
+    }
+
+    @mixin thumb-active($shift) {
+        background-position: $left-shift $top-shift-active + $shift;
+    }
+
+/**
+ * Navigation Thumb Phone
+ */
+// Parameters
+    $top-shift-phone:  -600px;
+    $top-shift-hover-phone:  $top-shift-phone - 25;
+    $top-shift-active-phone:  $top-shift-phone - 50;
+
+    @mixin thumb-phone($shift-phone) {
+        background: url(../images/icons.png)no-repeat $left-shift $top-shift-phone + $shift-phone transparent;
+    }
+
+    @mixin thumb-hover-phone($shift-phone) {
+        background-position: $left-shift $top-shift-hover-phone + $shift-phone;
+    }
+
+    @mixin thumb-active-phone($shift-phone) {
+        background-position: $left-shift $top-shift-active-phone + $shift-phone;
+    }
+
+/**
+ * Touch Button
+ */
+@mixin touch-button() {
+    background-color: #e6e6e6;
+    border: 1px solid #dbdbdb;
+    border-radius: 0;
+    color: $txt-copy;
+    display: block;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    height: 50px;
+    margin: -1px 0 0 0;
+    padding-left: 30%;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    width: 100% !important;
+    text-indent: -1000em;
+    vertical-align: middle;
+    width: 100%;
+
+    a {
+        height: 50px;
+        margin: 12px auto 0;
+        padding: 0 10px 0 0;
+        width: 50px;
+    }
+
+    &:focus, &:hover {
+        background-color: #dbdbdb;
+        background-position: 0 0;
+        border-color: #ccc;
+        text-decoration: none;
+    }
+}
+
+/**
+ * Ellipsise
+ */
+@mixin ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/**
+ * Nav Tabs
+ */
+@mixin nav-tabs() {
+    background-color: #fff;
+    border-bottom: 1px solid #bdbdbd;
+    margin: 0;
+
+    li {
+        &:last-child > a {border-right: 0 none;}
+
+        a {
+            @include border-radius(0,0,0,0);
+            background-color: #efefef;
+            border-color: #bdbdbd;
+            border-style: solid;
+            border-width: 0 1px 1px !important;
+            color: $txt-copy-darker;
+            font: 700 11px/18px arial;
+            height: 17px;
+            margin: 0 0 0 -1px;
+            padding: 0 3%;
+            text-align: center;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        a:hover {background-color: rgba(0,0,0,.1);}
+
+        &.active a,
+        &.active a:focus,
+        &.active a:hover {
+            background-color: #fff;
+            border-bottom: 0 none;
+            border-color: #aaa;
+            outline: none;
+            border: 1px solid #aaa;
+            border-bottom: none;
+        }
+    }
+}

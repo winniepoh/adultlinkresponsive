@@ -1,0 +1,27 @@
+.wg-phone-ad {
+    @include single-box-shadow(0, -1px, 2px, 2px, rgba(0, 0, 0, 0.5));
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+
+    img {
+        width: 100%;
+    }
+
+    .button-close {
+        color: #fff;
+        display: block;
+        font-size: 32px;
+        opacity: .5;
+        position: absolute;
+        right: 5px;
+        text-decoration: none;
+        top: 5px;
+        z-index: 1001;
+
+        &:hover {opacity: 1;}
+    }
+}

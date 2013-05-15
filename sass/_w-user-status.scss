@@ -1,0 +1,94 @@
+/**
+ * User Status
+ */
+ .wg-user-status {
+    @extend .row-fluid;
+    margin: 0 0 3px;
+    padding: 0;
+ }
+
+.w-status-bar {
+    @extend .span10;
+    color: #333;
+    font: normal 300 13px/20px arial;
+    overflow: hidden;
+    padding: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .status-label {
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .status-value {}
+}
+
+.w-online-status {
+    @extend .span2;
+    padding: 7px 0 0 15px;
+    text-align: right;
+    white-space: nowrap;
+
+    .status-label {}
+
+    .status-value {}
+
+    .status-icon {
+        @include border-radius(50%,50%,50%,50%);
+        display: inline-block;
+        height: 8px;
+        margin-left: 2px;
+        width: 8px;
+    }
+
+    &.online .status-icon {background-color: #0ced21;}
+
+    &.offline .status-icon {background-color: #ccc;}
+}
+
+/* Hide Status widget at the top on Desktop and Landscape Tablet */
+.wg-profile-chip .wg-user-status {display: none;}
+
+/* Large desktop */
+@media (min-width: 1200px) {}
+ 
+/* Tablet landscape (1024x768) */
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/* Portrait tablet to landscape and desktop */
+@media (max-width: 1171px) {}
+
+/* Small tablet and down */
+@media (max-width: 800px) {
+    .wg-user-status {display: none;}
+
+    .wg-profile-chip .wg-user-status {
+        display: block;
+        margin: 0;
+
+        .widget {
+            border: 0 none;
+            float: none;
+            font: 12px/14px arial;
+            margin: 0 0 5px;
+            min-height: auto;
+            padding: 0;
+            width: 100%;
+        }
+    }
+}
+
+/* Tablet Portrait and down */
+@media (max-width: 768px) {}
+
+/* Small tablet portrait (600x800) */
+@media (min-width: 480px) and (max-width: 600px) {}
+ 
+/* Mobile Landscape and down */
+@media (max-width: 480px) {
+    .wg-user-status {display: none;}
+}
+
+/* Mobile Portrait (320x480) */
+@media (max-width: 320px) {}

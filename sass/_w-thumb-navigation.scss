@@ -1,0 +1,268 @@
+/**
+ * Thumb Navigation
+ */
+.w-thumb-navigation {
+    @extend .row;
+    border: 0 solid #dbdbdb;
+    margin: 10px 0;
+    position: relative;
+
+    [class^="thumb-"] {
+        display: block;
+        float: left;
+        margin-left: 2.8%;
+        overflow: hidden;
+        padding: 0 !important;
+        position: relative;
+        width: 10%;
+
+        &:first-child {margin-left: 0;}
+
+        a {
+            background-color: #efefef;
+            border: 1px solid #dbdbdb;
+            color: $txt-copy;
+            display: block;
+            font: 300 10px/12px arial;
+            height: 77px;
+        }
+
+        .icon {
+            display: block;
+            height: 47px;
+            margin-top: 1px;
+            width: 100%;
+        }
+
+        &:hover {
+            a {
+                background-color: #dbdbdb;
+                border-color: #ccc;
+                text-decoration: none;
+                transition: all 0.3s ease 0s;
+            }
+        }
+
+        .text {
+            display: block;
+            padding: 0 7px;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    /* Desktop and Tablet */
+    .thumb-add-to-favs {
+        $shift: 0px;
+        .icon {@include thumb($shift);}
+        &:hover .icon {@include thumb-hover($shift);}
+        &.active .icon {@include thumb-active($shift);}
+    }
+
+    .thumb-send-message {
+        $shift: -150px;
+        .icon {@include thumb($shift);}
+        &:hover .icon  {@include thumb-hover($shift);}
+        &.active .icon {@include thumb-active($shift);}
+    }
+
+    .thumb-chat-now {
+        $shift: -300px;
+        .icon {@include thumb($shift);}
+        &:hover .icon {@include thumb-hover($shift);}
+        &.active .icon {@include thumb-active($shift);}
+    }
+
+    .thumb-request-a-date {
+        $shift: -450px;
+        .icon {@include thumb($shift);}
+        &:hover .icon {@include thumb-hover($shift);}
+        &.active .icon {@include thumb-active($shift);}
+    }
+
+    .thumb-share-my-private-pics {
+        $shift: -600px;
+        .icon {@include thumb( $shift);}
+        &:hover .icon {@include thumb-hover( $shift);}
+        &.active .icon {@include thumb-active( $shift);}
+    }
+
+    .thumb-add-to-friends {
+        $shift: -900px;
+        .icon {@include thumb($shift);}
+        &:hover .icon {@include thumb-hover($shift);}
+        &.active .icon {@include thumb-active($shift);}
+    }
+
+    .thumb-report-user {
+        $shift: -1050px;
+        .icon {@include thumb($shift);}
+        &:hover .icon {@include thumb-hover($shift);}
+        &.active .icon {@include thumb-active($shift);}
+    }
+
+    .thumb-block-user {
+        $shift: -1200px;
+        .icon {@include thumb($shift);}
+        &:hover .icon {@include thumb-hover($shift);}
+        &.active .icon {@include thumb-active($shift);}
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {}
+
+/* Tablet landscape and down */
+@media (max-width: 1024px) {
+    .w-thumb-navigation {
+        margin-left: 0;
+        width: 100%;
+
+        [class^="thumb-"] {
+            margin-left: 0px;
+            width: 25% !important;
+
+            a {
+                @include touch-button();
+                height: 50px;
+                margin: 1px 0 0 -1px;
+                padding-left: 33%;
+                text-indent: 0;
+            }
+
+            .icon {
+                float: left;
+                left: 0;
+                position: absolute;
+                width: 33%;
+            }
+
+            .text {
+                display: table-cell;
+                font-size: 10px;
+                height: 50px;
+                margin: 0;
+                text-align: left;
+                vertical-align: middle;
+            }
+        }
+
+        &.hide-phone {display: none;}
+
+        &.show-tablet {display: block;}
+    }
+}
+
+/* Small Tablet landscape and down */
+@media (max-width: 800px) {}
+
+/* Tablet portrait and down */
+@media (max-width: 768px) {
+   .w-thumb-navigation {
+        float: right;
+        width: 50%;
+
+        &.hide-phone {display: none;}
+
+        &.show-phone {display: block;}
+
+        /* Phone */
+        .thumb-add-to-favs {
+            $shift-phone: 0px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active-phone($shift-phone);}
+        }
+
+        .thumb-send-message {
+            $shift-phone: -75px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon  {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active(-phone$shift-phone);}
+        }
+
+        .thumb-chat-now {
+            $shift-phone: -150px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active-phone($shift-phone);}
+        }
+
+        .thumb-request-a-date {
+            $shift-phone: -225px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active-phone($shift-phone);}
+        }
+
+        .thumb-share-my-private-pics {
+            $shift-phone: -300px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active-phone($shift-phone);}
+        }
+
+        .thumb-add-to-friends {
+            $shift-phone: -375px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active-phone($shift-phone);}
+        }
+
+        .thumb-report-user {
+            $shift-phone: -450px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active-phone($shift-phone);}
+        }
+
+        .thumb-block-user {
+            $shift-phone: -525px;
+            .icon {@include thumb-phone($shift-phone);}
+            &:hover .icon {@include thumb-hover-phone($shift-phone);}
+            &.active .icon {@include thumb-active-phone($shift-phone);}
+        }
+
+        [class^="thumb-"] {
+            float: left;
+            margin-left: 0;
+            width: 50% !important;
+
+            a {padding: 0 5%;}
+
+            .icon {
+                float: none;
+                height: 24px;
+                margin-bottom: auto;
+                margin: 0 auto;
+                position: relative;
+                width: 30px;
+            }
+
+            .text {
+                display: block;
+                height: auto;
+                line-height: 11px;
+                padding: 0;
+                text-align: center;
+            }
+        }
+    }
+}
+
+/* Small tablet portrait  and down */
+@media (max-width: 600px) {}
+
+/* Mobile Landscape and down */
+@media (max-width: 480px) {}
+
+/* Mobile Portrait (320x480) */
+@media (max-width: 320px) {
+   .w-thumb-navigation {
+        float: none;
+        width: 100%;
+
+        [class^="thumb-"] {width: 50% !important;}
+    }
+}

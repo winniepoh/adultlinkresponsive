@@ -1,0 +1,280 @@
+
+/**
+ * Widget Group - Profile Chip
+ */
+.wg-profile-chip {
+    @extend .span8;
+    border: #bdbdbd solid 1px;
+    display: table-cell;
+    vertical-align: top;
+
+    .nav-tabs {
+        @include nav-tabs(); 
+
+        li {
+            border: 0 none;
+            padding: 0;
+            width: 25%;
+        }
+    }
+
+    .tab-content {
+        @extend .clearfix;
+        margin-top: -1px;
+        min-height: auto;
+        overflow: visible;
+
+        .tab-pane {
+            display: none;
+            width: 100%;
+        }
+
+        & > .active {display: block;}
+
+        .widget {
+            border: 0 none;
+            margin: 0;
+            padding: 10px 10px 0;
+        }
+    }
+
+    li {
+        border-bottom: 1px solid #eaeaea;
+        line-height: 20px;
+        overflow: hidden;
+        padding: 0 2px;
+
+        .caption,
+        .value {
+            @include box-sizing(border-box);
+            display: inline-block;
+            float: left;
+            font-style: normal;
+            width: 50%;
+        }
+
+        .caption {
+            color: $txt-copy-darker;
+            padding-right: 1em;
+        }
+
+        .value {line-height: 16px;}
+    }
+
+    li:last-child {border: 0 none;}
+}
+
+/**
+ * Widget Profile Chip User
+ */
+.w-profile-chip-user {
+    li {
+        .caption,
+        .value {
+            display: table-cell;
+            float: none;
+            width: auto;
+        }
+
+        .caption {white-space: nowrap;}
+    }
+}
+
+/**
+ * Widget Profile Chip Attributes
+ */
+.w-profile-chip-stats {
+    li {
+        float: left;
+        margin-right: 1%;
+        width: 49%;
+
+        &:nth-child(-2) {border: 0 none;}
+    }
+}
+
+/**
+ * Widget Profile Chip Swing
+ */
+.w-profile-chip-swing {
+    h4 {
+        border-bottom: 1px solid #EAEAEA;
+        color: $txt-copy-darker;
+        font-size: 12px;
+    }
+
+    li {
+        .caption {color: $txt-copy !important;}
+
+        .value {text-align: right;}
+    }
+}
+
+/**
+ * Widget Profile Chip History
+ */
+.w-profile-chip-history {
+    .history-list {}
+
+    .history-item {
+        border: 0 none;
+        color: $txt-copy-darker;
+
+        * {
+            font-size: 11px;
+            line-height: 12px;
+            overflow: hidden;
+            text-overfow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        .history-user-avatar {
+            border: 1px solid #bdbdbd;
+            display: block;
+            height: 40px;
+            float: right;
+            margin: 0 0 0 15px;
+            width: 40px;
+        }
+
+        .history-entry {
+            @include border-radius(4px,4px,4px,4px);
+            border: 1px solid #bdbdbd;
+            display: block;
+            height: 32px;
+            margin: 4px 0;
+            padding: 0 5px;
+
+            & > * {
+                display: table-cell;
+                height: 31px;
+                vertical-align: middle;
+            }
+        }
+
+        .history-datetime {}
+
+        .history-message {
+            padding: 0 15px;
+            width: 100%;
+
+            .history-service-message {}
+
+            .history-user-message {
+                color: $txt-copy;
+                font-style: italic;
+            }
+        }
+
+        .history-read-full {
+            color: #3B5998;
+            text-align: right;
+            text-decoration: underline;
+        }
+
+        &:nth-child(even) {
+            .history-user-avatar {
+                float: left;
+                margin: 0 15px 0 0;
+            }
+
+            .history-entry {background-color: #efefef;}
+        }
+    }
+}
+
+/**
+ * Widget Send Message
+ */
+.w-send-message {
+    display: block;
+    overflow: hidden;
+    padding: 3px 10px 10px;
+
+    .control-group {
+        border: none;
+        padding: 0;
+    }
+
+    textarea {
+        //height: 140px;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .btn-success {float: right;}
+}
+
+/**
+ * Responsive Layouts
+ */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    .wg-profile-chip {
+        .tab-content {}
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .wg-profile-chip {
+        &.show-desktop {display: block;}
+
+        &.hide-tablet {display: none;}
+
+        .tab-content {min-height: auto;}
+    }
+}
+
+/* Tablet landscape and down (1024) */
+@media (max-width: 1024px) {
+    .wg-profile-chip {
+        form textarea {}
+
+        .hide-desktop {display: none;}
+
+        .show-tablet {display: block;}
+
+        .tab-content {min-height: auto;}
+    }
+}
+
+/* Small tablet landscape and down */
+@media (max-width: 800px) {
+    .wg-profile-chip {
+        width: 50% !important;
+
+        .show-tablet {
+            display: block;
+
+            .tab-content {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* Tablet Portrait and down */
+@media (max-width: 768px) {
+    .row-fluid {
+        .wg-profile-chip {
+            display: block;
+            float: none;
+            margin-left: 0 !important;
+            width: 100% !important;
+            clear: both;
+        }
+    }
+}
+
+/* Small tablet portrait and down */
+@media (max-width: 600px) {}
+
+/* Mobile Landscape and down */
+@media (max-width: 480px) {}
+
+/* Mobile Portrait (320x480) */
+@media (max-width: 320px) {}

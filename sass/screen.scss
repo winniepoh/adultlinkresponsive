@@ -1,0 +1,31 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+/* import vendors */
+@import 'bootstrap/_bootstrap.min',
+        'font-awesome/_font-awesome';
+
+/* import variables */
+@import '_mixins',
+        '_colors';
+
+/* import basic styles */
+@import '_reset',
+        '_forms',
+        '_typography';
+
+/* import local component */
+@import '_navbar',
+        '_layout',
+        '_leftBar',
+        '_rightBar',
+        '_wg-profile-pictures',
+        '_wg-profile-chip',
+        '_w-thumb-navigation',
+        '_wg-profile-info-chip',
+        '_w-carousel',
+        '_w-user-status',
+        '_w-pager',
+        '_wg-phone-ad';

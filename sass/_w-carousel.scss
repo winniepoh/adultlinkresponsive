@@ -1,0 +1,163 @@
+
+.w-carousel {
+    border: 1px solid #dbdbdb;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    .wrap {
+        background-color: #E7E7E7;
+        margin: 0 19px;
+        overflow: hidden;
+        padding: 1px 0;
+    }
+
+    .carousel-inner {
+        position: relative;
+        width: 200%;
+
+        left: 0px; /* I AM DEBUGGER, REMOVE ME LATER */
+    }
+
+    .item {
+        background-color: #fff;
+        border: 1px solid #bdbdbd;
+        display: block;
+        float: left;
+        margin: 0 0.5px;
+        padding: 0;
+        position: relative;
+        transition: left 0.6s ease-in-out 0s;
+        width: 8.27%;
+
+        img {}
+
+        .request-access {
+            background-color: rgba(0,0,0,.65);
+            color: #dcdcdc;
+            display: block;
+            font-size: 14px;
+            font-weight: 300;
+            height: 100%;
+            padding-top: 7%;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 0;
+            width: 100%;
+
+            .icon {
+                @include thumb(-1350px);
+                display: block;
+                height: 50px;
+                margin-top: -25px;
+                position: absolute;
+                top: 40%;
+                width: 100%;
+            }
+
+            * {
+                display: block;
+                padding-bottom: 40%;
+            }
+
+            &:hover {
+                background-color: rgba(0,0,0,.5);
+                text-decoration: none;
+            }
+        }
+
+        .caption {
+            background-color: rgba(255, 255, 255, .75);
+            bottom: 0;
+            display: block;
+            font: 300 10px/11px arial;
+            height: 24px;
+            padding: 1px;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+
+        .title,
+        .counter {
+            color: $txt-copy-darker;
+            display: block;
+            font-style: normal;
+        }
+
+        &.album {}
+    }
+
+    .carousel-control {
+        @include border-radius(0, 0, 0, 0);
+        background-color: #e7e7e7;
+        border: 0 none;
+        height: 100%;
+        margin: 0;
+        top: 0;
+        position: absolute;
+        width: 19px;
+
+        &:hover {background-color: rgba(0, 0, 0, .2);}
+
+        [class^="icon-"] {
+            color: $txt-copy;
+            font-size: 24px;
+            height: 24px;
+            margin-top: -15px;
+            position: absolute;
+            top: 50%;
+        }
+
+        &.left {
+            left: 0;
+
+            * {left: 6px;}
+        }
+
+        &.right {
+            right: 0;
+
+            * {right: 2px;}
+        }
+    }
+}
+
+/**
+ * Responsive Layouts
+ */
+
+/* Large desktop */
+@media (min-width: 1200px) {}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .w-carousel {}
+}
+
+/* Tablet landscape and down (1024) */
+@media (max-width: 1024px) {
+    .w-carousel {}
+}
+
+/* Small tablet landscape and down */
+@media (max-width: 800px) {
+    .w-carousel {}
+}
+
+/* Tablet Portrait and down */
+@media (max-width: 768px) {}
+
+/* Small tablet portrait and down */
+@media (max-width: 600px) {}
+
+/* Mobile Landscape and down */
+@media (max-width: 480px) {
+    .w-carousel {}
+}
+
+/* Mobile Portrait (320x480) */
+@media (max-width: 320px) {
+    .w-carousel {}
+}

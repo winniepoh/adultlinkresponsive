@@ -1,0 +1,134 @@
+/**
+ * Profile Pictures
+ */
+ .wg-profile-pictures {
+    @extend .span4;
+    display: table-cell;
+    padding-right: 10px;
+    vertical-align: top;
+
+    header {
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px 1px 0; 
+        height: 28px;
+        margin: 0;
+        padding: 0 5px;
+        position: relative;
+        z-index: 1;
+
+        a {
+            color: #666;
+
+            &:hover {text-decoration: underline;}
+        }
+    }
+
+    .profile-pictures-title {
+        @include box-sizing(border-box);
+        @include ellipsis();
+        display: inline-block;
+        float: left;
+        font: 700 14px/27px arial;
+        height: 100%;
+        margin: 0;
+        width: 60%;
+    }
+
+    .webcam {
+        float: right;
+        height: 28px;
+        line-height: 27px;
+        max-width: 40%;
+        overflow: hidden;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &.online {color: #3c0;}
+
+        [class^="icon"] {font-size: 15px;}
+    }
+}
+
+
+/**
+ * Widget Profile Pictures
+ */
+.w-profile-pictures {
+    position: relative;
+
+    .profile-picture {
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 0 1px 1px; 
+    }
+
+    .profile-picture-navigation {
+        opacity: .5;
+
+        a[role="button"] {
+            height: 40px;
+            margin-top: -30px;
+            position: absolute;
+            text-indent: -1000em;
+            top: 50%;
+            width: 30px;
+        }
+
+        .button-left {
+            @include icon-img(center, -472px);
+            left: 4px;
+        }
+
+        .button-right {
+            @include icon-img(center, -513px);
+            left: auto;
+            right: 4px;
+        }
+    }
+
+    &:hover .profile-picture-navigation {
+        opacity: 1;
+    }
+}
+
+/**
+ * Responsive Layouts
+ */
+
+/* Large desktop */
+@media (min-width: 1200px) {}
+ 
+/* Tablet landscape and down */
+@media (max-width: 1024px) {}
+
+/* Small tablet landscape and down */
+@media (max-width: 800px) {
+    .row-fluid .wg-profile-pictures {
+        float: left;
+        width: 48.3333% !important;
+    }
+}
+
+/* Tablet Portrait and down */
+@media (max-width: 768px) {}
+
+/* Small tablet portrait and down */
+@media (max-width: 600px) {}
+
+/* Mobile Landscape and down */
+@media (max-width: 480px) {
+    .row-fluid .wg-profile-pictures {
+        float: left;
+        width: 48.3333% !important;
+    }
+}
+
+/* Mobile Portrait (320x480) */
+@media (max-width: 320px) {
+    .row-fluid .wg-profile-pictures {
+        float: none;
+        width: 100% !important;
+    }
+}

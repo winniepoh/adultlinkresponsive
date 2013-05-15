@@ -1,0 +1,145 @@
+/*
+ * Global form styles
+*/
+    
+form {
+    margin: 0;
+
+    /* Form Placeholder Fix (when clicking within a form field, a placeholder stays visible in some browsers */
+    /*________ DO NOT combine these instructions! _______*/
+    textarea:focus:-webkit-input-placeholder    { color: transparent; }
+    textarea:focus:-placeholder                 { color: transparent; }
+    textarea:focus:-moz-placeholder             { color: transparent; }
+    input:focus:-placeholder                    { color: transparent; }
+    input:focus:-webkit-input-placeholder       { color: transparent; }
+    input:focus:-moz-placeholder                { color: transparent; }
+    textarea:focus::-webkit-input-placeholder   { color: transparent; }
+
+    .error {
+        &.message {margin-left: 10px;}
+    }
+}
+
+input, textarea, select {
+    @include single-box-shadow(0, 0, 4px, rgba(0, 0, 0, 0.2), inset);
+}
+
+.control-group {
+    border-bottom: 1px solid #ddd;
+    @include single-box-shadow(0, 1px, 0, 0, rgba(255, 255, 255, .8));
+    margin-bottom: 12px;
+    padding-bottom: 15px;
+
+    &:last-child,
+    & .control-group:last-child {
+        border: 0 none;
+        @include single-box-shadow(0, 0, 0, 0, transparent);
+        margin: 0;
+        padding: 0;
+    }
+
+    .radio,
+    .checkbox {
+        float: left;
+        margin: 0 20px 5px 0;
+        min-width: 100px;
+        width: 20%;
+    }
+}
+
+.control-label {
+    clear: both;
+    display: inline-block;
+    font-weight: 700;
+    margin: 0 0 5px;
+}
+
+.controls {
+    &:after {
+        @extend .clearfix:after;
+    }
+
+    & > div:after {
+        @extend .clearfix:after;
+    }
+}
+
+.form-actions {
+    border: 0 none;
+    padding: 0;
+}
+
+/* Buttons
+------------------------------------------------- */
+.button {
+    @extend .btn;
+
+    &:focus {outline: none !important;}
+
+    i:before {@extend [class*=" icon-"]:before !optional;}
+    
+    &.confirm {@extend .btn-success;}
+
+    &.cancel, &.reject {@extend .btn-danger;}
+    
+    &.submit {@extend .btn-primary;}
+    
+    &.success, &.new {@extend .btn-success;}
+    
+    &.edit, &.upload, &.webcam {@extend .btn-warning;}
+}
+
+/**
+* Responsive Styles
+*/
+
+/* Portrait tablet to landscape and desktop
+---------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .control-group {
+        .radio,
+        .checkbox {
+            width: 27% !important;
+        }
+    }
+}
+
+/* Portrait tablet to landscape and desktop
+---------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 979px) {}
+
+/* Landscape phone to portrait tablet
+---------------------------------------------------- */
+@media (max-width: 767px) {
+    .control-group {
+        .radio,
+        .checkbox {
+            margin-right: 15px !important;
+            width: 42% !important;
+        }
+    }
+}
+
+/* Landscape phones and down
+---------------------------------------------------- */
+@media (max-height: 320px) and (max-width: 480px) {
+    .control-group {
+        .radio,
+        .checkbox {
+            margin-right: 0 !important;
+            width: 100% !important;
+        }
+    }
+}
+
+/* Portrait phones and down
+---------------------------------------------------- */
+@media (max-width: 320px) and (max-height: 480px) {
+    .control-group {
+        .radio,
+        .checkbox {
+            margin-right: 0 !important;
+            width: 100% !important;
+        }
+    }
+}
